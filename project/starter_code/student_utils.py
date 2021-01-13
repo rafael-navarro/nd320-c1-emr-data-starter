@@ -79,7 +79,8 @@ def create_tf_categorical_feature_cols(categorical_col_list,
         '''
         tf_categorical_feature_column = tf.feature_column.categorical_column_with_vocabulary_file(
             key=c, vocabulary_file = vocab_file_path, num_oov_buckets=1)
-        tf_categorical_feature_column = tf.feature_column.indicator_column(tf_categorical_feature_column)
+        #tf_categorical_feature_column = tf.feature_column.indicator_column(tf_categorical_feature_column)
+        tf_categorical_feature_column = tf.feature_column.embedding_column(tf_categorical_feature_column, dimension=10)
         output_tf_list.append(tf_categorical_feature_column)
     return output_tf_list
 
